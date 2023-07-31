@@ -8,8 +8,7 @@
             <core:Icon
                 src="sap-icon://hello-world"
                 size="8rem"
-                class="sapUiMediumMargin"
-            ></core:Icon>
+                class="sapUiMediumMargin"/>
         </content>
         <beginButton>
             <Button
