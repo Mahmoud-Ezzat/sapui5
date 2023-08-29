@@ -42,18 +42,5 @@ sap.ui.define([
             dialog.setBindingContext(item.getBindingContext("invoice"), "invoice");
             dialog.open();
         },
-
-        onSelectionChange: function(oEvent) {
-			var sOrderId = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("drinkId");
-			this.getOwnerComponent().getRouter()
-				.navTo("drinkDetails", 
-					{drinkId:sOrderId}, 
-					!Device.system.phone);
-		}
-
-
-
-
-
     })
 })

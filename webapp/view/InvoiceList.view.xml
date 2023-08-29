@@ -15,11 +15,9 @@
                 <SearchField width="50%" search=".onFilterInvoices" />
             </Toolbar>
         </headerToolbar>
-         <!-- press=" onListItemPress" -->
         <items>
             <ObjectListItem
-               
-                press="onSelectionChange"
+                press=" onListItemPress"
                 type="Active"
                 title="{invoice>ProductName}">
 
