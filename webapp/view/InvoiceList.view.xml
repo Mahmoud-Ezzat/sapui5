@@ -7,41 +7,56 @@
         headerText="{i18n>invoiceListTitle}"
         class="saUiResponsiveMargin"
         width="auto"
-        items="{
-            path:'invoice>/Invoices',
-            sorter:{
-                path:'ShipperName',
-                group:true
-            }
-        }">
+        items="{invoice>/Invoices}">
         <headerToolbar>
             <Toolbar>
-            <Title text="{i18n>invoiceListTitle}"/>
-            <ToolbarSpacer/>
-            <SearchField width="50%" search=".onFilterInvoices"/>
+                <Title text="{i18n>invoiceListTitle}" />
+                <ToolbarSpacer />
+                <SearchField width="50%" search=".onFilterInvoices" />
             </Toolbar>
         </headerToolbar>
+         <!-- press=" onListItemPress" -->
         <items>
             <ObjectListItem
-                title="{invoice>Quantity} x {invoice>ProductName}"
-                number="{
-                    parts: [{path: 'invoice>ExtendedPrice'}, {path: 'view>/currency'}],
-                    type: 'sap.ui.model.type.Currency',
-                    formatOptions: {
-                        showMeasure: false
-                    }
-                }"
-                numberUnit="{view>/currency}"
-                numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error': 'Success'}"
-            >
-                <firstStatus>
-                    <ObjectStatus
-                        text="{
-                    path: 'invoice>Status',
-                    formatter: '.formatter.statusText'
-                }" />
-                </firstStatus>
+               
+                press="onSelectionChange"
+                type="Active"
+                title="{invoice>ProductName}">
+
+                <ObjectAttribute text="{invoice>shippmentPlace}" />
+                <ObjectAttribute text="{invoice>ShippedDate}" />
             </ObjectListItem>
+
         </items>
+
+
+        <dependents>
+            <Dialog id="myDialog"
+                title="item details"
+                type="Message"
+            >
+                <VBox renderType="Bare">
+                    <Label text="{invoice>ProductName}" />
+                    <!-- <Input value="{invoice>ProductName}" /> -->
+                </VBox>
+                <beginButton>
+                    <Button
+                        text="Cancel"
+                        press=".onCancelPress"
+                    />
+                </beginButton>
+                <endButton>
+                    <Button
+                        text="OK"
+                        press=".onOkPress"
+                    />
+                </endButton>
+            </Dialog>
+        </dependents>
+
+
+
     </List>
+
+
 </mvc:View>

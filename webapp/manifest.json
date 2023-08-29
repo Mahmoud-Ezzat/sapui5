@@ -19,11 +19,10 @@
             ]
         },
         "dataSources": {
-            "invoiceRemote": {
-                "uri": "https://services.odata.org/V2/Northwind/Northwind.svc/",
-                "type": "OData",
+            "<dataSourceAlias>": {
+                "uri": "<uri>",
                 "settings": {
-                    "odataVersion": "2.0"
+                    "localUri": "<localUri>"
                 }
             }
         }
@@ -80,7 +79,8 @@
                 "uri": "<uriRelativeToManifest>"
             },
             "invoice": {
-                "dataSource": "invoiceRemote"
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "Invoices.json"
             },
             "": {
                 "dataSource": "<dataSourceAlias>",
@@ -110,6 +110,7 @@
             "cozy": false
         }
     },
+
     "sap.platform.abap": {
         "_version": "1.1.0",
         "uri": "<uri>"

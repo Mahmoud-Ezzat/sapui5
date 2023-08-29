@@ -28,6 +28,32 @@ sap.ui.define([
             var oList = this.byId("invoiceList");
             var oBinding = oList.getBinding("items");
             oBinding.filter(aFilter);
-        }
+        },
+        onCancelPress: function() {
+            this.byId("myDialog").close();
+          },
+      
+          onOkPress: function() {
+            this.byId("myDialog").close();
+          },
+          onListItemPress: function(event){
+            var dialog = this.byId("myDialog");
+            var item = event.getSource();
+            dialog.setBindingContext(item.getBindingContext("invoice"), "invoice");
+            dialog.open();
+        },
+
+        onSelectionChange: function(oEvent) {
+			var sOrderId = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("drinkId");
+			this.getOwnerComponent().getRouter()
+				.navTo("drinkDetails", 
+					{drinkId:sOrderId}, 
+					!Device.system.phone);
+		}
+
+
+
+
+
     })
 })
